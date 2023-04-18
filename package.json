@@ -1,0 +1,24 @@
+{
+  "name": "atm-advanced",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wroomkchau/atm-advanced.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wroomkchau/atm-advanced/issues"
+  },
+  "homepage": "https://github.com/wroomkchau/atm-advanced#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.32.3"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^9.1.0"
+  }
+}
