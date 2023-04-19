@@ -1,0 +1,12 @@
+{
+  "default": {
+    "formatOptions": {
+     "snippetInterface": "async-await"
+    },
+    "paths": ["tests/*.feature"],
+    "publishQuiet": true,
+    "dryRun": false,
+    "require": ["steps/*.js"],
+    "format": ["html:cucumber-report.html", "json:cucumber-report.json", "progress-bar"]
+  }
+}
