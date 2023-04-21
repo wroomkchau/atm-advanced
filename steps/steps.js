@@ -2,6 +2,7 @@ const { Given, Then, When } = require ('@cucumber/cucumber');
 const { expect } = require ('@playwright/test');
 const loginPage = require(`../po/LoginPage`);
 const homePage = require(`../po/HomePage`);
+const filtersPage = require(`../po/FiltersPage`);
 
   Given('I am logged in', async function () {
     await loginPage.waitFor(loginPage.idField);
@@ -14,17 +15,19 @@ const homePage = require(`../po/HomePage`);
     await homePage.waitFor(homePage.selectProjectButton);
   });
   
-  When('I click {string}', async function (element) {
-    await homePage.waitFor(element);
-    await page.locator(element).click();
+  When('I click "homePage.filtersButton"', async function () {
+    await homePage.waitFor(homePage.filtersButton);
+    await page.locator(homePage.filtersButton).click();
   });
 
-  // When('I open base url with {string}', async function (urlPart) {
-  //   let url = 'https://localhost:8080/' + urlPart;
-  //   await page.goto(url);
-  //   await page.waitForSelector('.sidebar__sidebar--1J7aD');
-  // });
+  When('I open base url with {string}', async function (urlPart) {
+    const url = 'http://localhost:8080/' + urlPart;
+    await page.goto(url);
+	  await page.waitForSelector(homePage.filtersButton);
+  });
   
-  // Then('I should be on "Filters" page', async function () {
-  //   await expect(page).toHaveURL(/.*filters/);
-  // });
+  Then('I should be on "Filters" page', async function () {
+    await expect(page).toHaveURL(/.*filters/);
+    await filtersPage.waitFor(filtersPage.pageTitle);
+    await expect(page.locator(filtersPage.pageTitle)).toHaveText('Filters');
+  });

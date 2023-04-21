@@ -7,6 +7,6 @@
     "publishQuiet": true,
     "dryRun": false,
     "require": ["steps/*.js"],
-    "format": ["html:cucumber-report.html", "json:cucumber-report.json", "progress-bar"]
+    "format": ["html:reports/cucumber-report.html", "json:reports/cucumber-report.json","junit:reports/cucumber-report.xml", "progress"]
   }
 }

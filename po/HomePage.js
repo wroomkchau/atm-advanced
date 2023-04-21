@@ -6,7 +6,7 @@ class HomePage extends BasePage {
 		super(page);
 		this.url = url;
         this.selectProjectButton = `.sidebar__main-block--3Agjk .projectSelector__project-selector--FXbsR`;
-        this.filtersButton = `.sidebar__top-block--6oCNs .sidebar__sidebar-btn--1kGbJ', { hasText: 'Filters' }`;
+        this.filtersButton = `svg[viewBox="0 0 17 17"]`;
     }
 }
 
