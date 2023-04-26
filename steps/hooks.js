@@ -1,9 +1,19 @@
-const { Before, BeforeAll, After, AfterAll, setDefaultTimeout } = require(`@cucumber/cucumber`);
-const { Browser, BrowserContext, Page, chromium } = require(`@playwright/test`);
-const App = require ('../po/');
+const { Before, BeforeAll, After, AfterAll } = require(`@cucumber/cucumber`);
+const { chromium } = require(`@playwright/test`);
+// const App = require ('../po/');
+const fs = require('fs');
 
-BeforeAll(async () => {
-	browser = await chromium.launch({ headless: false });
+BeforeAll(async () => {	
+	fs.writeFileSync('combined.log', '');
+	browser = await chromium.launch(
+		{
+		  headless: false,
+		  logger: {
+		    isEnabled: (name, severity) => name === 'browser',
+		    log: (name, severity, message, args) => console.log(`${name} ${message}`)
+		  }
+		}
+	);
 });
 
 Before(async () => {
