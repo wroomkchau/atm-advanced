@@ -1,7 +1,11 @@
 {
   "default": {
     "formatOptions": {
-     "snippetInterface": "async-await"
+     "snippetInterface": "async-await",
+     "jiraOptions": {
+			"regexp": "J-\\d+",
+			"report": "reports/xray.json"
+		}
     },
     "paths": ["tests/*.feature"],
     "publishQuiet": true,

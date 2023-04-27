@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js test --require steps/*.js"
+    "test": "cucumber-js test --require steps/*.js -f xray-formatter"
   },
   "repository": {
     "type": "git",
