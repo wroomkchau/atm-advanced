@@ -32,9 +32,19 @@ const logger = require(`../support/logger.config`).logger;
     logger.info(`${url} was opened`);
   });
   
-  Then('I should be on "Filters" page', async function () {
-    await expect(page).toHaveURL(/.*filters/);
-    await filtersPage.waitFor(filtersPage.pageTitle);
-    await expect(page.locator(filtersPage.pageTitle)).toHaveText('Filters');
-    logger.info(`Page url contains "/filters" text`);
+  Then('I should be on {string} page', async function (rpPage) {
+    let a = `.*${rpPage}`
+    let reg = new RegExp(a)
+    await expect(page).toHaveURL(reg);
+    const pages = {
+      dashboard : `ALL DASHBOARDS`,
+      launches : `ALL LAUNCHES`,
+      filters : `FILTERS`,
+      settings : `SETTINGS`,
+      members : `PROJECT MEMBERS`
+    }
+    console.log();
+    let pageElement = await page.getByText(pages[rpPage]).first();
+    await expect(pageElement !== undefined ).toBeTruthy();
+    logger.info(`Page url contains "/${rpPage}" text`);
   });
