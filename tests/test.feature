@@ -4,10 +4,18 @@ Feature: Filters page
 Scenario: User can access Filters page via side menu
     Given I am logged in
     When I click "homePage.filtersButton"
-    Then I should be on "Filters" page
+    Then I should be on "filters" page
 
 @J-2    
-Scenario: User can access Filters page via direct URL
+Scenario Outline: User can access pages via direct URL
     Given I am logged in
-    When I open base url with "ui/#superadmin_personal/filters"
-    Then I should be on "Filters" page
+    When I open base url with "ui/#superadmin_personal/<page>"
+    Then I should be on "<page>" page
+
+    Examples:
+        | page |
+        |dashboard|
+        |launches|
+        |filters|
+        |settings|
+        |members|
